@@ -43,15 +43,34 @@ Written by: Edward Mills
     Welcome to my Strings page at UAT. I created this page for my CSC102 Intro to programming class.
     CSSC102 covers html, CASS, and Javascript web development.
     </p>
-    <form id="myForm">
-        <label for="frame"> First name:</label>
-        <Input type="text" id="fname" name="fname"><br><br>
-        <label for="lname"> Last name:</label>
-        <Input type="text" id="lname" name="lname"><br><br>
-        <label for="zip"> Zip code:</label>
-        <Input type="text" id="zip" name="zip"><br><br>
-        <Input type="submit" value="Submit">
+    <form id="palindrome-form">
+        <Input type="text" id="input-string" name="Palindrome"><br><br>
+        <button type="button" onclick="checkPalindrome()">Check</button>  
     </form>
+
+    <p id="result"></p>
+
+    <script>
+        function isPalindrome(str){
+            str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); // Convert to lowercase and remove non-alphanumeric characters//
+      const reversedStr = str.split('').reverse().join('');
+      return str === reversedStr;
+        }
+        function checkPalindrome() {
+      const inputElement = document.getElementById("input-string");
+      const resultElement = document.getElementById("result");
+      const inputString = inputElement.value;
+
+      if (isPalindrome(inputString)) {
+        resultElement.textContent = `"${inputString}" is a palindrome!`;
+      } else {
+        resultElement.textContent = `"${inputString}" is not a palindrome.`;
+      }
+    }
+    </script>
+
+
+
     <footer style="text-align: center;">
         Edward Mills<br>
         University of Advancing Technology<br>
